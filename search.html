@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="sumit kumar">
+  <title>Search User Details</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/fontawesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  <link href="../css/search.css" rel="stylesheet" type="text/css">
+   <link href="../css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+ <script src="../js/fontawesome.js"></script>
+ <script type="text/javascript" src="../js/Chart.min.js"></script>
+
+ </head>
+
+<body style="width:100%">
+  <!--=============================
+                                             NAVIGATION
+                                   =============================-->
+  <!--top nav start=======-->
+  <nav class="navbar navbar-inverse top-bar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button> <span class="menu-icon" id="menu-icon"><i class="fa fa-times" aria-hidden="true" id="chang-menu-icon"></i></span>
+        <a class="navbar-brand" href="#"><img src="../images/new logo.png" width="38%"> </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+        <form class="navbar-form navbar-left">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i> </button>
+            </div>
+          </div>
+        </form>
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#"><i class="fa fa-refresh"></i> Refresh</a> </li>
+          <li class=""><a href="#"><i class="fa fa-volume-up"></i></a> </li>
+          <li class=""><a href="#"><i class="fa fa-envelope"></i> <span class="badge">5</span></a> </li>
+          <li class=""><a href="#"><i class="fa fa-bell"></i> <span class="badge">9</span></a> </li>
+          <li class="">
+            <a href="#" class="user-profile"> <span class=""><img class="img-responsive" src="https://lh3.googleusercontent.com/-HxSAl6WJSI0/WM-dbkQ1ONI/AAAAAAAADuY/RsjaXC3tg4oBozCUYyLr12ZjZ1_Cl91mACJoC/w424-h319-p-rw/sumit.png"></span> </a>
+          </li>
+          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">MedAdmin         
+           <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+              <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+              <li> <a href="#"><i class="fa fa-power-off"></i> Logout</a> </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--    top nav end===========-->
+  <div class="wrapper" id="wrapper">
+    <div class="left-container" id="left-container">
+      <!-- begin SIDE NAV USER PANEL -->
+      <div class="left-sidebar" id="show-nav">
+        <ul id="side" class="side-nav">
+          <li class="panel">
+            <a id="panel1" href="javascript:;" data-toggle="collapse" data-target="#Dashboard"> <i class="fa fa-dashboard"></i> Dashboard
+              <i class="fa fa-chevron-left pull-right" id="arow1"></i> </a>
+            <ul class="collapse nav" id="Dashboard">
+              <li> <a href="home.html"><i class="fa fa-angle-double-right"></i>Home</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel2" href="javascript:;" data-toggle="collapse" data-target="#charts"> <i class="fa fa-search"></i> User Search
+              <i class="fa fa-chevron-left pull-right" id="arow2"></i> </a>
+            <ul class="collapse nav" id="charts">
+              <li> <a href="search.html"><i class="fa fa-angle-double-right"></i>View User Details</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel3" href="javascript:;" data-toggle="collapse" data-target="#calendar"> <i class="fa fa-calendar"></i> calendar
+              <span class="label label-danger">new event</span> <i class="fa fa-chevron-left pull-right" id="arow3"></i> </a>
+            <ul class="collapse nav" id="calendar">
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>View Events</a> </li>
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Add Events</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel4" href="javascript:;" data-toggle="collapse" data-target="#clipboard"> <i class="fa fa-clipboard"></i> Gallery
+              <i class="fa fa fa-chevron-left pull-right" id="arow4"></i> </a>
+            <ul class="collapse nav" id="clipboard">
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>View</a> </li>
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Add</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel5" href="javascript:;" data-toggle="collapse" data-target="#edit"> <i class="fa fa-edit"></i> edit
+              <i class="fa fa fa-chevron-left pull-right" id="arow5"></i>
+            </a>
+            <ul class="collapse nav" id="edit">
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Add Users</a> </li>
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Edit User details</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel6" href="javascript:;" data-toggle="collapse" data-target="#inbox"> <i class="fa fa-inbox"></i> inbox
+              <span class="label label-primary">new msg</span> <i class="fa fa fa-chevron-left pull-right" id="arow6"></i> </a>
+            <ul class="collapse nav" id="inbox">
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>View Mesage</a> </li>
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Send Message</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel7" href="javascript:;" data-toggle="collapse" data-target="#cogs"> <i class="fa fa-cogs"></i> Settings
+              <span class="label label-warning">Warning</span> <i class="fa fa fa-chevron-left pull-right" id="arow7"></i> </a>
+            <ul class="collapse nav" id="cogs">
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Preferences</a> </li>
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Configure</a> </li>
+            </ul>
+          </li>
+
+          <li class="panel">
+            <a id="panel9" href="javascript:;" data-toggle="collapse" data-target="#trash"> <i class="fa fa-trash"></i> Trash
+              <i class="fa fa fa-chevron-left pull-right" id="arow9"></i>
+            </a>
+            <ul class="collapse nav" id="trash">
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>View deleted Users</a> </li>
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Clone</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel11" href="javascript:;" data-toggle="collapse" data-target="#pie-Chart">
+              <i class="fa fa-bar-chart"></i> Chart
+              <span class="label label-success">Supper</span> <i class="fa fa fa-chevron-left pull-right" id="arow11"></i> </a>
+            <ul class="collapse nav" id="pie-Chart">
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Health charts</a> </li>
+              <li> <a href="#"><i class="fa fa-angle-double-right"></i>Edit</a> </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- END SIDE NAV USER PANEL -->
+    </div>
+    <div class="right-container" id="right-container">
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+            <ul class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="home.html"> Home</a></li>
+						<li class="active">User Search</li>
+					</ul>
+            </div>
+            <div class="col-md-8">
+            <ul class="list-inline pull-right mini-stat">
+							<li>
+								 <div id="reportrange" class="btn btn-green btn-square date-picker">
+									<i class="fa fa-calendar"></i>
+									<span class="date-range stat-value color-orang" id="date"></span>
+								</div>
+								
+							</li>
+						</ul>
+            </div>
+      <div class="container">
+	<div class="row">
+		<h2>Enter User name to get details</h2>
+           <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="  search-query form-control" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+						
+						
+						<div class="col-md-12" style="padding-top:50px">
+						<table id="example" class="table table-striped table-bordered" width="100%"></table>
+						</div>
+						</div>
+						</div>
+	</div>
+            
+				<div class="row">
+	 <div id="Smallchat">
+    <div class="Layout Layout-open Layout-expand Layout-right" style="background-color: #3F51B5;color: rgb(255, 255, 255);opacity: 5;border-radius: 10px;">
+      <div class="Messenger_messenger">
+        <div class="Messenger_header" style="background-color: rgb(22, 46, 98); color: rgb(255, 255, 255);">
+          <h4 class="Messenger_prompt">How can we help you?</h4> <span class="chat_close_icon"><i class="fa fa-window-close" aria-hidden="true"></i></span> </div>
+        <div class="Messenger_content">
+          <div class="Messages">
+            <div class="Messages_list">
+			</div>
+          </div>
+          <div class="Input Input-blank">
+            <textarea class="Input_field" placeholder="Send a message..." style="height: 20px;"></textarea>
+            <button class="Input_button Input_button-emoji">
+              <div class="Icon" style="width: 18px; height: 18px;">
+                <svg width="56px" height="56px" viewBox="1332 47 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 18px; height: 18px;">
+                  <g id="emoji" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(1332.000000, 47.000000)">
+                    <path d="M28,56 C12.536027,56 0,43.463973 0,28 C0,12.536027 12.536027,0 28,0 C43.463973,0 56,12.536027 56,28 C56,43.463973 43.463973,56 28,56 Z M28,50 C40.1502645,50 50,40.1502645 50,28 C50,15.8497355 40.1502645,6 28,6 C15.8497355,6 6,15.8497355 6,28 C6,40.1502645 15.8497355,50 28,50 Z" id="Oval-8" fill="#96AAB4" fill-rule="nonzero"></path>
+                    <path d="M28,47 C18.0588745,47 10,38.9411255 10,29 C10,27.5224898 11.5469487,26.5550499 12.8754068,27.2017612 C13.0116063,27.2662365 13.0926181,27.3037345 13.1866998,27.3464814 C13.4611235,27.4711684 13.7819537,27.6111958 14.1451774,27.7627577 C15.1908595,28.199088 16.3591406,28.6365764 17.6173846,29.0449298 C21.1841638,30.2025005 24.7379224,30.8945075 28,30.8945075 C31.2620776,30.8945075 34.8158362,30.2025005 38.3826154,29.0449298 C39.6408594,28.6365764 40.8091405,28.199088 41.8548226,27.7627577 C42.2180463,27.6111958 42.5388765,27.4711684 42.8133002,27.3464814 C42.9073819,27.3037345 42.9883937,27.2662365 43.0558366,27.2344634 C44.4530513,26.5550499 46,27.5224898 46,29 C46,38.9411255 37.9411255,47 28,47 Z M28,43 C34.6510529,43 40.2188483,38.3620234 41.6456177,32.1438387 C40.9980758,32.3847069 40.320642,32.6213409 39.6173846,32.8495777 C35.6841638,34.1260741 31.7379224,34.8945075 28,34.8945075 C24.2620776,34.8945075 20.3158362,34.1260741 16.3826154,32.8495777 C15.679358,32.6213409 15.0019242,32.3847069 14.3543823,32.1438387 C15.7811517,38.3620234 21.3489471,43 28,43 Z" id="Oval-8" fill="#96AAB4" fill-rule="nonzero"></path>
+                    <path d="M19,15 L19,20 C19,21.1045695 19.8954305,22 21,22 C22.1045695,22 23,21.1045695 23,20 L23,15 C23,13.8954305 22.1045695,13 21,13 C19.8954305,13 19,13.8954305 19,15 Z" id="Line" fill="#96AAB4" fill-rule="nonzero"></path>
+                    <path d="M32,15 L32,20 C32,21.1045695 32.8954305,22 34,22 C35.1045695,22 36,21.1045695 36,20 L36,15 C36,13.8954305 35.1045695,13 34,13 C32.8954305,13 32,13.8954305 32,15 Z" id="Line-Copy-2" fill="#96AAB4" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+              </div>
+            </button>
+            <button class="Input_button Input_button-send">
+              <div class="Icon" style="width: 18px; height: 18px;">
+                <svg width="57px" height="54px" viewBox="1496 193 57 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 18px; height: 18px;">
+                  <g id="Group-9-Copy-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(1523.000000, 220.000000) rotate(-270.000000) translate(-1523.000000, -220.000000) translate(1499.000000, 193.000000)">
+                    <path d="M5.42994667,44.5306122 L16.5955554,44.5306122 L21.049938,20.423658 C21.6518463,17.1661523 26.3121212,17.1441362 26.9447801,20.3958097 L31.6405465,44.5306122 L42.5313185,44.5306122 L23.9806326,7.0871633 L5.42994667,44.5306122 Z M22.0420732,48.0757124 C21.779222,49.4982538 20.5386331,50.5306122 19.0920112,50.5306122 L1.59009899,50.5306122 C-1.20169244,50.5306122 -2.87079654,47.7697069 -1.64625638,45.2980459 L20.8461928,-0.101616237 C22.1967178,-2.8275701 25.7710778,-2.81438868 27.1150723,-0.101616237 L49.6075215,45.2980459 C50.8414042,47.7885641 49.1422456,50.5306122 46.3613062,50.5306122 L29.1679835,50.5306122 C27.7320366,50.5306122 26.4974445,49.5130766 26.2232033,48.1035608 L24.0760553,37.0678766 L22.0420732,48.0757124 Z" id="sendicon" fill="#96AAB4" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--===============CHAT ON BUTTON STRART===============-->
+    <div class="chat_on"> <span class="chat_on_icon"><i class="fa fa-comments" aria-hidden="true"></i></span> </div>
+    <!--===============CHAT ON BUTTON END===============-->
+  </div>
+	</div>
+        </div>
+    </div>
+  </div>
+  <script src="../js/jquery-1.11.1.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/dateformat.js"></script>
+    <script src="../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#panel1").click(function() {
+        $("#arow1").toggleClass("fa-chevron-left");
+        $("#arow1").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel2").click(function() {
+        $("#arow2").toggleClass("fa-chevron-left");
+        $("#arow2").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel3").click(function() {
+        $("#arow3").toggleClass("fa-chevron-left");
+        $("#arow3").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel4").click(function() {
+        $("#arow4").toggleClass("fa-chevron-left");
+          $("#arow4").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel5").click(function() {
+        $("#arow5").toggleClass("fa-chevron-left");
+        $("#arow5").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel6").click(function() {
+        $("#arow6").toggleClass("fa-chevron-left");
+        $("#arow6").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel7").click(function() {
+        $("#arow7").toggleClass("fa-chevron-left");
+        $("#arow7").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel8").click(function() {
+        $("#arow8").toggleClass("fa-chevron-left");
+        $("#arow8").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel9").click(function() {
+        $("#arow9").toggleClass("fa-chevron-left");
+        $("#arow9").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel10").click(function() {
+        $("#arow10").toggleClass("fa-chevron-left");
+        $("#arow10").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel11").click(function() {
+        $("#arow11").toggleClass("fa-chevron-left");
+        $("#arow11").toggleClass("fa-chevron-down");
+      });
+        
+      $("#menu-icon").click(function() {
+        $("#chang-menu-icon").toggleClass("fa-bars");
+        $("#chang-menu-icon").toggleClass("fa-times");
+        $("#show-nav").toggleClass("hide-sidebar");
+        $("#show-nav").toggleClass("left-sidebar");
+          
+        $("#left-container").toggleClass("less-width");
+        $("#right-container").toggleClass("full-width");
+      });
+        
+    var now = dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss TT");
+		$('#date').append(now);	
+        
+    });
+	 $(".chat_on").click(function(){
+        $(".Layout").toggle();
+        $(".chat_on").hide(300);
+		setTimeout(function () {
+       $('<span  style="color:black">I am your Virtual Assistant, How can i help u?</span>')
+.insertBefore('.Messages_list');
+    }, 1000);
+		
+    });
+    
+       $(".chat_close_icon").click(function(){
+        $(".Layout").hide();
+           $(".chat_on").show(300);
+    });
+	var dataSet = [
+    [ "1001", "Tiger Nixon", "37.6", "114", "12", "85", "70","97", "88" ],
+    [ "1002", "Garrett Winters", "37", "82", "14", "73", "90", "99", "66" ],
+    [ "1003", "Ashton Cox", " 36.7", "90", "13", "100", " 60", "99", " 66"],
+    [ "1004", "Cedric Kelly", "36.1", "120", "17", "135", "55", "98","55"],
+    [ "1005", "Airi Satou", "34", "117", "15", "67", "87" ,"93","82"],
+    [ "1006", "Brielle Williamson", "39", "110", "14", "122", "74","102","45" ],
+    [ "1007", "Herrod Chandler", "36.6", "86", "18", "100", "92","97","67" ],
+    [ "1008", "Rhona Davidson", "37.2", "75", "13", "93", "73","100","45" ],
+    [ "1009", "Colleen Hurst", "36.7", "126", "14", "104", "89", "89", "45" ],
+    [ "1010", "Sonya Frost", "33", "65", "9", "156", "68" ,"98","78"],
+    [ "1011", "Jena Gaines", "36.8", "95", "16", "135", "78", "96","66" ],
+    [ "1012", "Quinn Flynn", "37", "80", "15", "140", "82","98","76" ],
+    [ "1013", "Charde Marshall", "36.5", "113", "15", "85", "83","97","55" ],
+    [ "1014", "Haley Kennedy", "37.4", "86", "14", "89", "70","99","55" ],
+    [ "1015", "Tatyana Fitzpatrick", "36.9", "107", "14", "128", "94", "100", "76" ],
+    [ "1016", "Michael Silva", "37", "115", "12", "134", "82","104","45" ],
+    [ "1017", "Paul Byrd", "37.4", "65", "19", "136", "95","90","78" ],
+    [ "1018", "Gloria Little", "35", "120", "12", "61", "75","110","91" ],
+    [ "1019", "Bradley Greer", "36.5", "80", "16", "89", "73","97","34" ],
+    [ "1020", "Dai Rios", "37", "95", "14", "70", "100","78","100" ],
+    [ "1021", "Jenette Caldwell", "37.5", "149", "7", "167", "89","98","51" ],
+    [ "1022", "Yuri Berry", "34.3", "97", "15", "127", "45", "100", "59" ],
+    [ "1023", "Caesar Vance", "37.4", "119", "12", "185", "53","78", "67" ],
+    [ "1024", "Doris Wilder", "31.8", "64", "14", "80", "95","97", "61" ],
+    [ "1025", "Angelica Ramos", "36.5", "104", "24", "116", "72", "97","135" ],
+    [ "1026", "Gavin Joyce", "40", "94", "15", "83", "76", "78", "128" ],
+    [ "1027", "Jennifer Chang", "36.9", "68", "10", "137", "84", "97","132" ],
+    [ "1028", "Brenden Wagner", "37.5", "127", "27", "128", "89" ,"99","127"],
+    [ "1029", "Fiona Green", "37.5", "95", "16", "140", "83" ,"98","139"],
+    [ "1030", "Shou Itou", "37.2", "80", "15", "75", "51", "110", "124"],
+    [ "1031", "Michelle House", "33.5", "94", "12", "126", "79", "97", "145" ],
+    [ "1032", "Suki Burks", "37.3", "93", "16", "70", "80", "100", "132" ],
+    [ "1033", "Prescott Bartlett", "36.8", "90", "14", "130", "68", "78","131" ],
+    [ "1034", "Gavin Cortez", "45.0", "107", "19", "88", "112","100", "130" ],
+    [ "1035", "Martena Mccray", "37", "119", "14", "99", "78", "98","136" ],
+    [ "1036", "Unity Butler", "37.5", "120", "15", "82", "86", "99", "120" ],
+];
+ 
+$(document).ready(function() {
+    $('#example').DataTable( {
+        data: dataSet,
+        columns: [
+		    { title: "User Health ID" },
+            { title: "Name" },
+            { title: "Body Temperature" },
+            { title: "Blood Pressure" },
+            { title: "Respiration" },
+            { title: "Glucose" },
+            { title: "Heart Rate" },
+			{ title: "Oxygen Saturation" },
+			{ title: "ECG" }
+        ]
+    } );
+} );
+  </script>
+    
